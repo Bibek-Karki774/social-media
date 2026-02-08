@@ -2,3 +2,18 @@
     display: flex;
     column-gap: 1em;
 }
+
+.post{
+    position: relative;
+}
+.cross-badge {
+position: absolute;
+top: 0;
+right: 0;
+  color: red;          /* cross color */
+  font-weight: 900px;   /* make it bold */
+  font-size: 30px;     /* adjust size */
+  cursor: pointer;
+  margin-right: 5px;
+  
+}

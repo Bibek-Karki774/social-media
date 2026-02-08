@@ -6,6 +6,8 @@ import Sidebar from './components/Sidebar.jsx';
 import Post from './components/Post.jsx';
 import CreatePost from './components/CreatePost.jsx';
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   const [selectedTab, setSelectedTab] = useState("Home");
   const [addPost, setAddPost]= useState([]);
@@ -20,14 +22,26 @@ function App() {
       return newPosts;
     })
   }
+
+
+const deletePost = (index) => {
+  setAddPost((prevPosts) => {
+    const newPosts = [...prevPosts]; 
+    newPosts.splice(index, 1);       
+    return newPosts;                 
+  });
+};
+
+
  
+
 
   return (
     <>
     <Header />
     <div className="sidebyside">
     <Sidebar selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-    {selectedTab === "Home" ?  <Post addPost={addPost} increaseReaction={increaseReaction} /> : <CreatePost setAddPost={(newPost) => setAddPost([newPost, ...addPost])}/>}
+    {selectedTab === "Home" ?  <Post addPost={addPost} increaseReaction={increaseReaction} deletePost={deletePost} /> : <CreatePost setAddPost={(newPost) => setAddPost([newPost, ...addPost])}/>}
     </div>
     <Footer />
     </>
